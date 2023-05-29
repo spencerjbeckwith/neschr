@@ -12,7 +12,7 @@ func readCmd() (input string, output string, mode string) {
 	// Parse incoming args
 	inputPtr := flag.String("i", "", "input file (.png)")
 	outputPtr := flag.String("o", "", "output file (.chr)")
-	modePtr := flag.String("m", "horizontal", "horizontal, vertical, or nametable - default to horizontal")
+	modePtr := flag.String("m", "horizontal", "horizontal or vertical order mode - default to horizontal")
 	flag.Parse()
 
 	// Ensure validity
@@ -28,8 +28,8 @@ func readCmd() (input string, output string, mode string) {
 		os.Exit(0)
 	}
 
-	if mode != "horizontal" && mode != "vertical" && mode != "nametable" {
-		fmt.Println("mode must be one of horizontal, vertical, or nametable")
+	if mode != "horizontal" && mode != "vertical" {
+		fmt.Println("mode must be one of horizontal or vertical")
 		os.Exit(1)
 	}
 
