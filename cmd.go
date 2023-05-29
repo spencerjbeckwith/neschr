@@ -8,7 +8,7 @@ import (
 )
 
 // Reads and verifies incoming CLI arguments
-func ReadCmd() (input string, output string, mode string) {
+func readCmd() (input string, output string, mode string) {
 	// Parse incoming args
 	inputPtr := flag.String("i", "", "input file (.png)")
 	outputPtr := flag.String("o", "", "output file (.chr)")

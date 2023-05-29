@@ -9,22 +9,26 @@ import (
 )
 
 func main() {
-	input, _, _ := ReadCmd()
+	input, _, _ := readCmd()
 
 	// read input file
 	data, err := os.Open(input)
 	if err != nil {
-		fmt.Println("unable to open input:", err)
+		fmt.Println(input, "- unable to open input:", err)
 		os.Exit(2)
 	}
 
+	// decode the data
 	img, _, err := image.Decode(data)
 	if err != nil {
-		fmt.Println("unable to decode input:", err)
+		fmt.Println(input, "- unable to decode input:", err)
 		os.Exit(3)
 	}
 
-	fmt.Println(ConvertTile(img, 0, 0))
+	// initialize list of colors
+	colors := detectColors(img)
+
+	fmt.Println(convertTile(img, colors, 0, 0))
 
 	// TODO initialze output buffer
 	// TODO figure out color/luminosity detection
