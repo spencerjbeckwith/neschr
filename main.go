@@ -6,10 +6,12 @@ import (
 	_ "image/jpeg"
 	_ "image/png"
 	"os"
+	"time"
 )
 
 func main() {
-	input, _, _ := readCmd()
+	start := time.Now()
+	input, output, _ := readCmd()
 
 	// read input file
 	data, err := os.Open(input)
@@ -28,11 +30,12 @@ func main() {
 	// initialize list of colors
 	colors := detectColors(img)
 
-	fmt.Println(convertTile(img, colors, 0, 0))
+	convertTile(img, colors, 0, 0)
 
 	// TODO initialze output buffer
 	// TODO figure out color/luminosity detection
 	// TODO read tiles in correct order
 	// TODO write to output file
 
+	fmt.Printf("%s -> %s (%s)\n", input, output, time.Since(start))
 }

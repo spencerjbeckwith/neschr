@@ -35,8 +35,8 @@ func detectColors(image image.Image) ImageColors {
 	bounds := image.Bounds()
 
 out:
-	for x := bounds.Min.X; x < bounds.Max.X; x++ {
-		for y := bounds.Min.Y; y < bounds.Max.Y; y++ {
+	for y := bounds.Min.Y; y < bounds.Max.Y; y++ {
+		for x := bounds.Min.X; x < bounds.Max.X; x++ {
 			// If color at this position is new, add it to the list
 			col := image.At(x, y)
 
