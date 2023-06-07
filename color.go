@@ -18,6 +18,9 @@ func (a *ImageColors) Len() int {
 	return 4
 }
 func (a *ImageColors) Less(i, j int) bool {
+	if a[i] == nil || a[j] == nil { // Move nils to the end of the list
+		return false
+	}
 	return toLuminosity(a[i]) < toLuminosity(a[j])
 }
 func (a *ImageColors) Swap(i, j int) {

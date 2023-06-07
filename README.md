@@ -53,7 +53,6 @@ Oh yeah, and this tool is really fast. You can output hundreds or maybe thousand
 ## To-Do
 
 - Detect blank tiles and, depending on args, ignore them, warn the user, or omit them completely
-- Handle images with fewer than four colors in them
 
 ## License
 
