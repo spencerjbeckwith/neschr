@@ -7,7 +7,10 @@ import (
 )
 
 func toLuminosity(color color.Color) float32 {
-	r, g, b, _ := color.RGBA()
+	r, g, b, a := color.RGBA()
+	if a == 0 {
+		return -1 // handles transparency
+	}
 	return (0.299 * float32(r)) + (0.587 * float32(g)) + (0.114 * float32(b))
 }
 
