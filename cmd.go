@@ -8,11 +8,12 @@ import (
 )
 
 // Reads and verifies incoming CLI arguments
-func readCmd() (input string, output string, mode string) {
+func readCmd() (input string, output string, mode string, debug *bool) {
 	// Parse incoming args
 	inputPtr := flag.String("i", "", "input file (.png)")
 	outputPtr := flag.String("o", "", "output file (.chr)")
 	modePtr := flag.String("m", "horizontal", "horizontal or vertical order mode - default to horizontal")
+	debug = flag.Bool("d", false, "enable debug logging")
 	flag.Parse()
 
 	// Ensure validity
@@ -33,5 +34,5 @@ func readCmd() (input string, output string, mode string) {
 		os.Exit(1)
 	}
 
-	return input, output, mode
+	return input, output, mode, debug
 }

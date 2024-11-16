@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"image"
 	"image/color"
 	"sort"
@@ -36,7 +37,7 @@ func (a *ImageColors) Swap(i, j int) {
 // The colors in the image are ordered based on their luminosity.
 //
 // Returns an error if there are more than four colors.
-func detectColors(image image.Image) ImageColors {
+func detectColors(image image.Image, debug *bool) ImageColors {
 	colors := ImageColors{}
 	bounds := image.Bounds()
 
@@ -47,7 +48,7 @@ out:
 			col := image.At(x, y)
 
 			// Normalize pixels w/ 0 alpha into black
-			_, _, _, a := col.RGBA()
+			r, g, b, a := col.RGBA()
 			if a == 0 {
 				col = color.RGBA{0, 0, 0, 0}
 			}
@@ -61,6 +62,9 @@ out:
 				// No color at this index yet
 				if colors[c] == nil {
 					colors[c] = col
+					if *debug {
+						fmt.Printf("Found color %d (RGBA %d, %d, %d, %d) at (%d, %d)\n", c, r/256, g/256, b/256, a/256, x, y)
+					}
 					if c == 3 {
 						// Found our fourth color, stop scanning image
 						break out

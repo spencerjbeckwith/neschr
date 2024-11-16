@@ -25,7 +25,7 @@ out:
 				} else {
 					// This color isn't in our list, meaning this image has too many colors!
 					if i == 3 {
-						err = fmt.Errorf("too many colors in tile at %d, %d", startX, startY)
+						err = fmt.Errorf("too many colors in tile at %d, %d, pixel (%d, %d)", startX, startY, x, y)
 						break out
 					}
 				}

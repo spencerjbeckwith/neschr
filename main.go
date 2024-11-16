@@ -13,7 +13,7 @@ import (
 
 func main() {
 	start := time.Now()
-	input, output, mode := readCmd()
+	input, output, mode, debug := readCmd()
 
 	// Read input file
 	isGif := strings.HasSuffix(strings.ToLower(input), ".gif")
@@ -69,7 +69,7 @@ func main() {
 
 	for _, img := range images {
 		// Initialize list of colors
-		colors := detectColors(img)
+		colors := detectColors(img, debug)
 
 		// Scan each tile of the image
 		if mode == "horizontal" {

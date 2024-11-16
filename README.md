@@ -53,6 +53,10 @@ Oh yeah, and this tool is really fast. You can output hundreds or maybe thousand
 ## To-Do
 
 - Detect blank tiles and, depending on args, ignore them, warn the user, or omit them completely
+- Proper install script for a cloned repository
+- Upload binary as a build artifact instead of a file in the repo (ew)
+
+Will I ever do any of the above? Who knows.
 
 ## License
 
