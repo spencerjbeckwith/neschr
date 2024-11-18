@@ -41,6 +41,9 @@ func detectColors(image image.Image, debug *bool) ImageColors {
 	colors := ImageColors{}
 	bounds := image.Bounds()
 
+	// Always init color 0 to transparency - this makes it easier to use the right colors in NES palettes
+	colors[0] = color.RGBA{0, 0, 0, 0}
+
 out:
 	for y := bounds.Min.Y; y < bounds.Max.Y; y++ {
 		for x := bounds.Min.X; x < bounds.Max.X; x++ {
